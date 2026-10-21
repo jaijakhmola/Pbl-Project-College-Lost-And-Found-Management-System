@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B0F19">
+  <meta name="description" content="CampusFind — College Lost and Found Management System">
+  <title>CampusFind // Recovery Protocol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-cyan"></div>
+  <div class="ambient ambient-pink"></div>
+  <div class="grid-overlay"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="CampusFind home">
+      <span class="brand-mark">CF<span>+</span></span>
+      <span class="brand-name">CAMPUS<span>FIND</span><small>RECOVERY SYSTEM v1.0</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#reports">Reports</a>
+      <a href="#submit">Submit Item</a>
+      <a href="#admin">Admin</a>
+    </nav>
+    <div class="system-status">
+      <span class="status-dot"></span>
+      <span id="systemStatus">CONNECTING</span>
+    </div>
+  </header>
+
+  <main class="shell" id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="line"></span> CODE RAIDERS / IDS-III-2026-T066</div>
+        <h1>LOST SOMETHING?<br><span>RECLAIM YOUR</span><br><span class="glow-text">WORLD.</span></h1>
+        <p class="hero-description">
+          Your campus. Your community. One recovery network.
+          Register lost belongings, report found items, and let the
+          matching engine help reconnect people with their property.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#submit">+ CREATE REPORT</a>
+          <a class="btn btn-ghost" href="#reports">EXPLORE REPORTS ↗</a>
+        </div>
+        <div class="hero-meta">
+          <span><i class="mini-square"></i> LIVE REPORT NETWORK</span>
+          <span><i class="mini-square amber"></i> SMART MATCH ENGINE</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Cyberpunk recovery system graphic">
+        <div class="orbit orbit-outer"></div>
+        <div class="orbit orbit-middle"></div>
+        <div class="orbit orbit-inner"></div>
+        <div class="crosshair crosshair-a"></div>
+        <div class="crosshair crosshair-b"></div>
+        <div class="core">
+          <span class="core-top">RECOVERY</span>
+          <span class="core-symbol">⌖</span>
+          <span class="core-bottom">SYSTEM ONLINE</span>
+        </div>
+        <div class="floating-tag tag-a">SYS.01 / SCANNING</div>
+        <div class="floating-tag tag-b">MATCHING // ACTIVE</div>
+        <div class="floating-tag tag-c">CF_2026</div>
+        <div class="scan-line"></div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">01 / NETWORK OVERVIEW</span>
+          <h2>MISSION <span class="accent-cyan">CONTROL</span></h2>
+        </div>
+        <span class="section-code">DASHBOARD // LIVE DATA</span>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card cyan">
+          <span class="stat-icon">◈</span>
+          <span class="stat-label">TOTAL REPORTS</span>
+          <strong class="stat-number" id="totalCount">0</strong>
+          <span class="stat-foot">ALL REGISTERED RECORDS</span>
+        </article>
+        <article class="stat-card pink">
+          <span class="stat-icon">⌕</span>
+          <span class="stat-label">LOST ITEMS</span>
+          <strong class="stat-number" id="lostCount">0</strong>
+          <span class="stat-foot">AWAITING RECOVERY</span>
+        </article>
+        <article class="stat-card amber">
+          <span class="stat-icon">✓</span>
+          <span class="stat-label">FOUND ITEMS</span>
+          <strong class="stat-number" id="foundCount">0</strong>
+          <span class="stat-foot">READY FOR IDENTIFICATION</span>
+        </article>
+        <article class="stat-card green">
+          <span class="stat-icon">✦</span>
+          <span class="stat-label">RESOLVED</span>
+          <strong class="stat-number" id="resolvedCount">0</strong>
+          <span class="stat-foot">RECOVERY CASES CLOSED</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="submit" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">02 / INTAKE PROTOCOL</span>
+          <h2>REGISTER AN <span class="accent-pink">ITEM</span></h2>
+        </div>
+        <span class="section-code">NEW CASE // ENCRYPTED IN TRANSIT</span>
+      </div>
+
+      <div class="panel form-panel">
+        <div class="panel-top">
+          <span><span class="status-dot"></span> REPORT TERMINAL</span>
+          <span>FORM_ID: CF-NEW</span>
+        </div>
+
+        <form id="reportForm">
+          <div class="type-switch">
+            <label class="type-option lost-option">
+              <input type="radio" name="type" value="LOST" checked>
+              <span>⌕ &nbsp; I LOST SOMETHING</span>
+            </label>
+            <label class="type-option found-option">
+              <input type="radio" name="type" value="FOUND">
+              <span>✦ &nbsp; I FOUND SOMETHING</span>
+            </label>
+          </div>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>ITEM TITLE <b>*</b></span>
+              <input name="title" maxlength="100" required
+                placeholder="e.g. Black wireless headphones">
+            </label>
+
+            <label class="field">
+              <span>CATEGORY <b>*</b></span>
+              <select name="category" required>
+                <option value="">SELECT CATEGORY</option>
+                <option>Electronics</option>
+                <option>Documents</option>
+                <option>Accessories</option>
+                <option>Clothing</option>
+                <option>Bags</option>
+                <option>Books</option>
+                <option>Keys</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <label class="field full">
+              <span>DESCRIPTION <b>*</b></span>
+              <textarea name="description" maxlength="1200" rows="3"
+                required placeholder="Describe the item, colour, brand, identifying features..."></textarea>
+            </label>
+
+            <label class="field">
+              <span>LOCATION <b>*</b></span>
+              <input name="location" maxlength="160" required
+                placeholder="e.g. Library, Block B">
+            </label>
+
+            <label class="field">
+              <span>DATE <b>*</b></span>
+              <input name="date" id="reportDate" type="date" required>
+            </label>
+
+            <label class="field">
+              <span>CONTACT INFO <b>*</b></span>
+              <input name="contact" maxlength="160" required
+                placeholder="Email or college contact">
+            </label>
+
+            <label class="field">
+              <span>URGENCY LEVEL <b>*</b></span>
+              <select name="urgency" required>
+                <option>Medium</option>
+                <option>Low</option>
+                <option>High</option>
+              </select>
+            </label>
+
+            <div class="field full">
+              <span>ITEM IMAGE <small>(OPTIONAL · PNG/JPG/WEBP · UNDER 2 MB)</small></span>
+              <label class="upload-zone" for="itemImage">
+                <span class="upload-icon">⇧</span>
+                <strong>UPLOAD VISUAL EVIDENCE</strong>
+                <span>Click to select an image from your device</span>
+                <input id="itemImage" name="image" type="file"
+                  accept="image/png,image/jpeg,image/webp">
+              </label>
+              <div id="imagePreview" class="image-preview" hidden>
+                <img id="previewImage" alt="Selected item preview">
+                <div class="preview-info">
+                  <strong id="previewName"></strong>
+                  <span id="previewSize"></span>
+                  <button type="button" id="removeImage" class="text-button">REMOVE IMAGE ×</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-bottom">
+            <p>All fields marked <b>*</b> are required.</p>
+            <button id="submitButton" class="btn btn-primary" type="submit">
+              TRANSMIT REPORT ↗
+            </button>
+          </div>
+          <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="reports" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">03 / ITEM DATABASE</span>
+          <h2>ACTIVE <span class="accent-cyan">MISSIONS</span></h2>
+        </div>
+        <span class="section-code" id="resultCount">0 ACTIVE REPORTS</span>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search"
+            placeholder="Search item, category, location..." maxlength="100">
+          <kbd>SEARCH</kbd>
+        </label>
+
+        <div class="filter-tabs" aria-label="Report type filter">
+          <button class="filter-btn active" data-filter="ALL">ALL</button>
+          <button class="filter-btn" data-filter="LOST">LOST</button>
+          <button class="filter-btn" data-filter="FOUND">FOUND</button>
+        </div>
+
+        <label class="sort-select">
+          <span>SORT</span>
+          <select id="sortSelect">
+            <option value="newest">NEWEST FIRST</option>
+            <option value="oldest">OLDEST FIRST</option>
+            <option value="urgency">HIGHEST URGENCY</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="loadingState" class="loading-state" hidden>
+        <div class="loader-ring"></div>
+        <span>SCANNING DATABASE...</span>
+      </div>
+
+      <div id="reportGrid" class="report-grid"></div>
+
+      <div id="emptyState" class="empty-state" hidden>
+        <div class="empty-symbol">⌕</div>
+        <h3>NO MATCHES DETECTED</h3>
+        <p>Try a different search or register a new report.</p>
+      </div>
+    </section>
+
+    <section id="admin" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">04 / RESTRICTED ACCESS</span>
+          <h2>ADMIN <span class="accent-pink">TERMINAL</span></h2>
+        </div>
+        <span class="section-code">AUTHORIZED PERSONNEL ONLY</span>
+      </div>
+
+      <div class="panel admin-panel">
+        <div class="admin-intro">
+          <div class="admin-symbol">⌘</div>
+          <div>
+            <h3>CONTROL INTERFACE</h3>
+            <p>Authenticate to resolve or delete reports.</p>
+          </div>
+        </div>
+
+        <form id="adminForm" class="admin-auth">
+          <label class="field">
+            <span>ADMINISTRATOR KEY</span>
+            <input id="adminKey" type="password" autocomplete="current-password"
+              maxlength="256" required placeholder="Enter server administrator key">
+          </label>
+          <button id="adminLogin" class="btn btn-secondary" type="submit">
+            AUTHENTICATE
+          </button>
+          <button id="adminLogout" class="btn btn-ghost" type="button" hidden>
+            LOCK TERMINAL
+          </button>
+        </form>
+
+        <p id="adminStatus" class="admin-status" role="status" aria-live="polite">
+          TERMINAL LOCKED — AUTHENTICATION REQUIRED
+        </p>
+        <p class="security-note">
+          The key is verified by the server. Do not share it or commit it to source control.
+          The demo stores the authenticated key in page memory only.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">CAMPUS<span>FIND</span> // CF-2026</div>
+    <p>BUILT BY CODE RAIDERS · IDS-III-2026-T066</p>
+    <p>RECOVERY PROTOCOL ACTIVE <span class="status-dot"></span></p>
+  </footer>
+
+  <div id="toastRegion" class="toast-region"
+    aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
